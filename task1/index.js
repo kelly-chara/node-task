@@ -8,3 +8,4 @@ function getRandomNumber() {
 
 // Run in REPL mode
 repl.start('> ').context.getRandomNumber = getRandomNumber;
+
