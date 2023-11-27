@@ -1,5 +1,9 @@
 import { MyEventEmitter } from "./eventEmitter.mjs";
+import { WithTime } from "./withTime.mjs";
+import fetch from "node-fetch";
 
+
+/*
 const myEmitter = new MyEventEmitter();
 
 function c1() {
@@ -46,3 +50,19 @@ myEmitter.off('eventOne', c1);
 console.log(myEmitter.listenerCount('eventOne'));
 myEmitter.off('eventOne', c2);
 console.log(myEmitter.listenerCount('eventOne'));
+
+*/
+
+const withTime = new WithTime();
+const fetchData = async () => {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts/1")
+   
+    return  response.json()
+}
+
+withTime.on('begin', () => console.log('About to execute'));
+withTime.on('data', (result) => console.log('Received data:', result));
+withTime.on('end', (time) => console.log('Done with execute. in: ', time));
+console.log(withTime.rawListeners("end"));
+
+withTime.execute(fetchData)
