@@ -2,7 +2,7 @@ import fs from 'fs';
 import csvtojson from 'csvtojson';
 
 const csvFilePath = './csvdirectory/input.csv';
-const txtFilePath = './csvdirectory/output.json';
+const txtFilePath = './csvdirectory/output.txt';
 
 const readStream = fs.createReadStream(csvFilePath);
 const writeStream = fs.createWriteStream(txtFilePath);
