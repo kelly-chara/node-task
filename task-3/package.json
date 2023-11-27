@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.mjs",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon",
+    "transform": "nodemon transformCsv.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "csvtojson": "^2.0.10",
     "node-fetch": "^3.3.2",
     "nodemon": "^3.0.1"
   }
