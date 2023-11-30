@@ -11,7 +11,7 @@ export const handleUsersRoute = (req, res) => {
 
     switch (req.method) {
         case "POST":
-            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.writeHead(204, { 'Content-Type': 'text/html' });
             res.end('CREATE User info\n');
             break;
         case "DELETE":

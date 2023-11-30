@@ -13,7 +13,7 @@ const server = http.createServer((req, res) => {
   
   if (req.url === `/users/${userId}`) {
     handleUsersRoute(req, res);
-  } else if (req.url === `/users/${userId}/hobby`) {
+  } else if (req.url === `/users/${userId}/hobbies`) {
     handleHobbiesRoute(req, res);
   } else if (req.url === '/users' && req.method === "GET") {
     handleAllUsersRoute(req, res)
