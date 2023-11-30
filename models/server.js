@@ -15,7 +15,7 @@ const server = http.createServer((req, res) => {
     handleUsersRoute(req, res);
   } else if (req.url === `/users/${userId}/hobbies`) {
     handleHobbiesRoute(req, res);
-  } else if (req.url === '/users' && req.method === "GET") {
+  } else if (req.url === '/users') {
     handleAllUsersRoute(req, res)
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });

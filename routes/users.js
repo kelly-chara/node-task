@@ -1,8 +1,9 @@
+import { createUserController } from "../controllers/createUserController.js";
 import { deleteUserController } from "../controllers/deleteUserController.js";
-import { getUserController,  } from "../controllers/getUserController.js";
+import { getAllUsersController } from "../controllers/getAllUsersController.js";
+import { getUserController, } from "../controllers/getUserController.js";
 import { mockusersData } from "../data/mockUsers.js";
 import url from "url";
-deleteUserController
 
 export const handleUsersRoute = (req, res) => {
 
@@ -10,10 +11,6 @@ export const handleUsersRoute = (req, res) => {
     const userId = (path.split("/")[2]);
 
     switch (req.method) {
-        case "POST":
-            res.writeHead(204, { 'Content-Type': 'text/html' });
-            res.end('CREATE User info\n');
-            break;
         case "DELETE":
             deleteUserController(res, userId)
             break;
@@ -26,20 +23,26 @@ export const handleUsersRoute = (req, res) => {
             break;
         default:
             res.writeHead(404, { 'Content-Type': 'text/plain' });
-            res.end('Not Found\n');
+            res.end('Not Found from uuserid\n');
     }
 };
 
+
 export const handleAllUsersRoute = (req, res) => {
-    res.setHeader("Content-Type", "application/json");
-    // Send the mockUsersData as JSON
 
-    const response = {
-        count : mockusersData.length,
-        data: mockusersData
-
+    switch (req.method) {
+        case "GET":
+            getAllUsersController(res);
+            break;
+        case "POST":
+            createUserController(req, res);
+            break;
+        default:
+            res.writeHead(404, { 'Content-Type': 'text/plain' });
+            res.end('Not Found from all\n');
     }
-    res.end(JSON.stringify(response));
+
+
 }
 
 

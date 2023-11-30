@@ -9,16 +9,19 @@ export const getUsersById = (id) => {
 
 export const createNewUser = (user) => {
 
-    user = {
+   
+    const userId = mockusersData.length + 1;
+     user = {
         ...user,
         id: userId
     }
-    const userId = mockusersData.length + 1;
-    const newUsersList = mockusersData.push(user);
+   
+     mockusersData.push(user);
+
     return {
         success: true,
         result: `User was created with id: ${userId}`,
-        data: newUsersList
+        data: mockusersData
     }
 }
 
