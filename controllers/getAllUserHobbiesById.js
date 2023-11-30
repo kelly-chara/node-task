@@ -1,4 +1,4 @@
-import { getHobbiesByUserId } from "../helpers/getUserById.js";
+import { getHobbiesByUserId } from "../helpers/userHelpers.js";
 
 export const getHobbiesController = (res, userId) => {
    

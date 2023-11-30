@@ -1,4 +1,4 @@
-import {  deleteUserById } from "../helpers/getUserById.js";
+import {  deleteUserById } from "../helpers/userHelpers.js";
 
 export const deleteUserController = (res, userId) => {
     const response = deleteUserById(userId);

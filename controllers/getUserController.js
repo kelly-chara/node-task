@@ -1,4 +1,4 @@
-import { getUsersById } from "../helpers/getUserById.js";
+import { getUsersById } from "../helpers/userHelpers.js";
 
 export const getUserController = (res, userId) => {
     const user = getUsersById(userId);

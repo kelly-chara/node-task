@@ -1,4 +1,4 @@
-import { createHobbieUserById } from "../helpers/getUserById.js";
+import { createHobbieUserById } from "../helpers/userHelpers.js";
 
 
 export const createHobbieController = (req, res, userId) => {
