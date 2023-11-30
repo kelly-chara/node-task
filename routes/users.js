@@ -1,7 +1,8 @@
-import { getUserController } from "../controllers/getUserController.js";
+import { deleteUserController } from "../controllers/deleteUserController.js";
+import { getUserController,  } from "../controllers/getUserController.js";
 import { mockusersData } from "../data/mockUsers.js";
 import url from "url";
-
+deleteUserController
 
 export const handleUsersRoute = (req, res) => {
 
@@ -14,8 +15,7 @@ export const handleUsersRoute = (req, res) => {
             res.end('CREATE User info\n');
             break;
         case "DELETE":
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end('DELETE User info\n');
+            deleteUserController(res, userId)
             break;
         case "PATCH":
             res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -33,7 +33,13 @@ export const handleUsersRoute = (req, res) => {
 export const handleAllUsersRoute = (req, res) => {
     res.setHeader("Content-Type", "application/json");
     // Send the mockUsersData as JSON
-    res.end(JSON.stringify(mockusersData));
+
+    const response = {
+        count : mockusersData.length,
+        data: mockusersData
+
+    }
+    res.end(JSON.stringify(response));
 }
 
 

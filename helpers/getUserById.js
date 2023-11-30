@@ -5,3 +5,22 @@ export const getUsersById = (id) => {
     
     return filterUser
 }
+
+export const deleteUserById = (id) => {
+    const indexToDelete = mockusersData.findIndex(user => user.id === +id);
+
+    if (indexToDelete === -1) {      
+        return  {
+            succes: false,
+            result: `User with id ${id} does not exists`
+        }
+    }
+
+    mockusersData.splice(indexToDelete, 1);
+
+    return {
+        succes: true,
+        result: `User with id ${id} was deleted`
+
+    }
+}
