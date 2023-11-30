@@ -1,4 +1,4 @@
-import { deleteHobbieUserById } from "../helpers/userHelpers.js";
+import { deleteHobbieUserById } from "../helpers/hobbiesHelpers.js";
 
 
 export const deleteHobbieController = (req, res, userId) => {

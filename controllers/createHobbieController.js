@@ -1,4 +1,4 @@
-import { createHobbieUserById } from "../helpers/userHelpers.js";
+import { createHobbieUserById } from "../helpers/hobbiesHelpers.js";
 
 
 export const createHobbieController = (req, res, userId) => {
@@ -15,14 +15,13 @@ export const createHobbieController = (req, res, userId) => {
         // Parse the JSON string
         const hobbie = JSON.parse(data);
   
-        console.log(hobbie);
-  
         const response = createHobbieUserById(userId, hobbie);
         const responseStr = JSON.stringify(response);
   
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(responseStr);
       } catch (error) {
+        console.log(error)
         // Handle JSON parsing error
         res.writeHead(400, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: 'Invalid JSON data' }));
