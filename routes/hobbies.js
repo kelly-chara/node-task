@@ -1,6 +1,7 @@
 import url from "url";
 import { getHobbiesController } from "../controllers/getAllUserHobbiesById.js";
 import { deleteHobbieController } from "../controllers/deleteHobbieController.js";
+import { createHobbieController } from "../controllers/createHobbieController.js";
 
 export const handleHobbiesRoute = (req, res) => {
 
@@ -9,8 +10,7 @@ export const handleHobbiesRoute = (req, res) => {
 
     switch (req.method) {
         case "POST":
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end('CREATE Hobby\n');
+            createHobbieController(req, res, userId)
             break;
         case "DELETE":
             deleteHobbieController(req, res, userId)

@@ -1,9 +1,10 @@
 import { mockusersData } from "../data/mockUsers.js";
 
 export const getUsersById = (id) => {
-    const filterUser = mockusersData.filter(user => user.id === +id)?.map(({ hobbies, ...user }) => user);
+    const filterUser = mockusersData.find(user => user.id === +id);
 
-    return filterUser;
+    const {hobbies, ...user} = filterUser;
+    return user;
 }
 
 export const getHobbiesByUserId = (id) => {
@@ -14,11 +15,9 @@ export const getHobbiesByUserId = (id) => {
 
 export const deleteHobbieUserById = (id, _hobbie = "") => {
 
-    console.log("HEADER RECEIVED", typeof _hobbie)
 
     const hobbies = getHobbiesByUserId(id);
 
-    console.log(hobbies)
     const indexToDelete = hobbies.findIndex((hobbie ) => hobbie === _hobbie);
 
     if (indexToDelete === -1) {
@@ -36,6 +35,19 @@ export const deleteHobbieUserById = (id, _hobbie = "") => {
         data: hobbies
     }
 }
+
+export const createHobbieUserById = (id, _hobbie = "") => {
+
+    const hobbies = getHobbiesByUserId(id);
+    const newList = [...hobbies, _hobbie]
+    
+    return {
+        succes: true,
+        result: `Hobbie was added`,
+        data: newList
+    }
+}
+
 
 export const deleteUserById = (id) => {
     const indexToDelete = mockusersData.findIndex(user => user.id === +id);
