@@ -8,7 +8,7 @@ export const getAllUsersController = (res) => {
     const response = {
         count: mockusersData.length,
         data: mockusersData
-
     }
+    
     res.end(JSON.stringify(response));
 }

@@ -1,12 +1,15 @@
+import { addHateoasLinks } from "../helpers/hateoas.js";
 import { getUsersById } from "../helpers/userHelpers.js";
 
 export const getUserController = (res, userId) => {
     const user = getUsersById(userId);
     
-    if (user.length) {
-        const response = JSON.stringify(user);
-        res.writeHead(200, { 'Content-Type': "application/json" });
-        res.end(response);
+    if (user) {
+        const responseWithLinks = addHateoasLinks(user, userId);
+        const responseStr = JSON.stringify(responseWithLinks);
+    
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(responseStr);
     }
     
     else {

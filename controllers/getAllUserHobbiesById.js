@@ -7,7 +7,11 @@ export const getHobbiesController = (res, userId) => {
    
     if (hobbies.length) {
         const response = JSON.stringify(hobbies);
-        res.writeHead(200, { 'Content-Type': "application/json" });
+        res.writeHead(200, { 
+            'Content-Type': "application/json",
+            'Cache-Control': 'max-age=3600', // Set the cache to expire after 1 hour
+            'Expires': new Date(Date.now() + 3600000).toUTCString(), // Set the expiration time
+         });
         res.end(response);
     }
     

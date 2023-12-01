@@ -2,7 +2,6 @@ import { partialUpdateUserById } from "../helpers/userHelpers.js";
 
 export const updateUserByIdController = (req, res, userId) => {
   let data = '';
-
   // Collect data chunks as they come in
   req.on('data', (chunk) => {
     data += chunk;
