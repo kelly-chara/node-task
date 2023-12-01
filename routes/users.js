@@ -2,7 +2,7 @@ import { createUserController } from "../controllers/createUserController.js";
 import { deleteUserController } from "../controllers/deleteUserController.js";
 import { getAllUsersController } from "../controllers/getAllUsersController.js";
 import { getUserController, } from "../controllers/getUserController.js";
-import { mockusersData } from "../data/mockUsers.js";
+import { updateUserByIdController } from "../controllers/updateUserController.js";
 import url from "url";
 
 export const handleUsersRoute = (req, res) => {
@@ -15,15 +15,14 @@ export const handleUsersRoute = (req, res) => {
             deleteUserController(res, userId)
             break;
         case "PATCH":
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end('UPDATE User info\n');
+            updateUserByIdController(req, res, userId)
             break;
         case "GET":
             getUserController(res, userId)
             break;
         default:
             res.writeHead(404, { 'Content-Type': 'text/plain' });
-            res.end('Not Found from uuserid\n');
+            res.end('Method not handled \n');
     }
 };
 
@@ -39,7 +38,7 @@ export const handleAllUsersRoute = (req, res) => {
             break;
         default:
             res.writeHead(404, { 'Content-Type': 'text/plain' });
-            res.end('Not Found from all\n');
+            res.end('Method not handled\n');
     }
 
 

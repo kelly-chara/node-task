@@ -1,5 +1,6 @@
 import { mockusersData } from "../data/mockUsers.js";
 
+
 export const getUsersById = (id) => {
     const filterUser = mockusersData.find(user => user.id === +id);
 
@@ -42,3 +43,30 @@ export const deleteUserById = (id) => {
         result: `User with id ${id} was deleted`
     }
 }
+
+export const partialUpdateUserById = (id, partialUpdate) => {
+    const users = mockusersData;
+    const index = users.findIndex(user => user.id === +id);
+  
+    if (index === -1) {
+      return {
+        success: false,
+        result: 'User not found',
+      };
+    }
+  
+    // Update only the fields provided in the partial update
+    const updatedUser = {
+      ...users[index],
+      ...partialUpdate,
+    };
+  
+    // Update the user data with the partially updated user
+    users[index] = updatedUser;
+  
+    return {
+      success: true,
+      result: 'User partially updated',
+      data: updatedUser,
+    };
+  };
